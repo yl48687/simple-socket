@@ -1,9 +1,30 @@
 # Simple Socket
-This project implements a client-server system using sockets. The client and server interact following a specific protocol:
+This project implements a basic client-server communication system using TCP sockets. The `client` and `server` applications exchange messages over the network. The `client` prompts the user to input an integer between 1 and 100 along with their name, which is then sent to the `server`. Upon receiving the client's message, the `server` performs operations including generating a random integer, computing the sum of this integer and the client's input, and sending the result back to the `client` along with the server's name.
+
+## Design Overview
+The project facilitates bidirectional communication between a `client` and a `server` using TCP sockets. The `client` component collects user input and establishes a TCP connection to the server. Meanwhile, the `server` waits for incoming connections and upon receiving a message from a `client`.
 
 ## Functionality
-### Server
-On the server side, the program first creates a string containing its name (e.g., "Server of Bob Smith"). It then listens for incoming connections from clients. Upon receiving a connection request from a client, the server extracts the client's name and the integer sent by the client. Subsequently, it prints both the client's name and its own name. The server then proceeds to select a random integer between 1 and 100. After selecting the integer, it calculates the sum of this integer and the one sent by the client. The server constructs a message containing its name, the server-chosen integer value, and the calculated sum, and sends this message back to the client. Following this, the server continues to listen for connections and process messages from clients.
+`client`:
+- Prompts the user for an integer input and their name.
+- Establishes a TCP connection to the server.
+- Sends a message to the server containing the user's name and the entered integer.
+- Receives a response from the server.
+- Prints the server's name along with the received numbers.
 
-### Client
-The client program begins by prompting the user to input an integer between 1 and 100. Upon receiving the input, it establishes a TCP socket connection to the server. Subsequently, it constructs a message comprising the client's name (e.g., "Client of Bob Smith") and the integer provided by the user. This message is then sent to the server. Following the transmission, the client enters a waiting state to receive a response from the server. Upon receiving the server's response, the client processes the received data, extracting the server's name, the integer chosen by the server, and the sum of the server-chosen integer and the client's integer. Finally, it prints this information for the user to view.
+`server`:
+- Creates a string containing its name.
+- Listens for incoming connections from clients.
+- Upon receiving a message from a client:
+- Extracts the client's name and the integer value.
+- Prints the client's name and the server's name.
+- Generates a random integer and computes the sum of this integer and the client's input.
+- Sends the server's name, the generated integer, and the sum back to the client.
+
+## File Structure and Content
+simple-socket/
+├── client/
+│   └── client.py
+├── README.md
+└── server/
+    └── server.py
