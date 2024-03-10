@@ -22,9 +22,11 @@ The project facilitates bidirectional communication between a `client` and a `se
 - Sends the server's name, the generated integer, and the sum back to the client.
 
 ## File Structure and Content
+```
 simple-socket/
 ├── client/
 │   └── client.py
 ├── README.md
 └── server/
     └── server.py
+```
